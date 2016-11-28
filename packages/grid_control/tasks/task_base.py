@@ -72,6 +72,7 @@ class TaskModule(NamedPlugin):
 		# Compute / get task ID
 		self.taskID = config.get('task id', 'GC' + md5_hex(str(time()))[:12], persistent = True)
 		self.taskDate = config.get('task date', strftime('%Y-%m-%d'), persistent = True, onChange = initSandbox)
+		self.taskTime = config.get('task time', strftime('%H%M%S'), persistent = True, onChange = initSandbox)
 		self.taskConfigName = config.getConfigName()
 		self._job_name_generator = config.getPlugin('job name generator', 'DefaultJobName',
 			cls = JobNamePlugin, pargs = (self,))
@@ -138,6 +139,7 @@ class TaskModule(NamedPlugin):
 			# Task infos
 			'GC_TASK_CONF': self.taskConfigName,
 			'GC_TASK_DATE': self.taskDate,
+			'GC_TASK_TIME': self.taskTime,
 			'GC_TASK_ID': self.taskID,
 			'GC_VERSION': utils.getVersion(),
 		}
