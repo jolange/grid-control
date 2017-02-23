@@ -44,6 +44,13 @@ class GridEngine_CheckJobs(CheckJobsWithProcess):
 	def _parse(self, proc):
 		proc.status(timeout = self._timeout)
 		status_string = proc.stdout.read(timeout = 0)
+		if not status_string:
+			self._status = CheckStatus.ERROR
+		else:
+			for result in self._parse_status_string(status_string):
+				yield result
+
+	def _parse_status_string(self, status_string):
 		# qstat gives invalid xml in <unknown_jobs> node
 		unknown_start = status_string.find('<unknown_jobs')
 		unknown_jobs_string = ''
