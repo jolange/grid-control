@@ -38,6 +38,7 @@ class Workflow(NamedPlugin):
 		# Workdir settings
 		self._workDir = config.getWorkPath()
 		self._checkSpace = config.getInt('workdir space', 10, onChange = None)
+                self._timeout = config.getInt('workdir space timeout', 5, onChange = None)
 
 		# Initialise task module
 		self.task = config.getPlugin(['module', 'task'], cls = TaskModule, tags = [self])
@@ -97,7 +98,7 @@ class Workflow(NamedPlugin):
 			# Check free disk space
 			spaceLogger = logging.getLogger('workflow.space')
 			spaceLogger.addFilter(LogEveryNsec(interval = 5 * 60))
-			if (self._checkSpace > 0) and utils.freeSpace(self._workDir) < self._checkSpace:
+			if (self._checkSpace > 0) and utils.freeSpace(self._workDir, self._timeout) < self._checkSpace:
 				spaceLogger.warning('Not enough space left in working directory')
 			else:
 				for action in imap(str.lower, self._actionList):
