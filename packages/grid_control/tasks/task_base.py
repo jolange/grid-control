@@ -104,6 +104,7 @@ class TaskModule(NamedPlugin):  # pylint:disable=too-many-instance-attributes
 		self._log.log(logging.DEBUG3, 'Using parameter adapter %s', repr(self._source))
 
 		self._log.info('Current task ID: %s', self._task_id)
+		self._log.info('Current workdir: %s', config.get_work_path())
 		self._log.info('Task started on: %s', self._task_date)
 
 	def can_finish(self):
