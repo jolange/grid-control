@@ -41,6 +41,7 @@ class BasicLogEventHandler(LocalEventHandler):
 		LocalEventHandler.__init__(self, config, name)
 		self._log_status = logging.getLogger('jobs.status')
 		self._show_wms = config.get_bool('event log show wms', False, on_change=None)
+		self._work_path = config.get_work_path()
 
 	def on_job_state_change(self, task, job_db_len,
 			jobnum, job_obj, old_state, new_state, reason=None):
@@ -69,6 +70,7 @@ class BasicLogEventHandler(LocalEventHandler):
 
 	def on_task_finish(self, task, job_len):
 		self._log_status.log_time(logging.INFO, 'Task successfully completed. Quitting grid-control!')
+		self._log_status.log_time(logging.INFO, 'Workdir was %s' % self._work_path)
 
 	def _explain_failure(self, task, job_obj):
 		map_error_code2msg = dict(task.map_error_code2msg)
