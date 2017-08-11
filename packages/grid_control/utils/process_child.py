@@ -47,4 +47,5 @@ def run_command(cmd, args, fd_map, env):  # run command by replacing the current
 	sys.stderr.write(str.join('\n', error_msg_list))
 	for fd_std in [0, 1, 2]:
 		_safe_close(fd_std)
-	exit_without_cleanup(os.EX_OSERR)  # exit forked process with OS error
+	exit_without_cleanup(33)  # exit forked process with OS error
+	# exit_without_cleanup(os.EX_OSERR)  # exit forked process with OS error

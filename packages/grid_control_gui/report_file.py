@@ -48,6 +48,9 @@ class FileReport(Report):
 			# no path known to write to
 			return
 		self._task_info['gc state'] = 'terminated'
+		# exception = sys.exc_info()
+		# if exception[0]:
+		# self._task_info['gc exception'] = exception
 		self._write_task_info()
 
 	def get_height(self):

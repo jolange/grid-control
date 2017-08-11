@@ -3,6 +3,11 @@
 sleep $1
 shift
 echo "Hello World - $@"
+echo "args:"
+for arg in "$@"; do
+    echo $arg
+done
+
 echo "Hello World - $@" >> argfile
 
 export
