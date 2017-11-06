@@ -2639,8 +2639,8 @@ Condor options
     List of available plugins:
      * Broker
 
-* ``task id`` = <text> (Default: <md5 hash>)
-    Persistent condor task identifier that is generated at the start of the task
+* ``submission id`` = <text> (Default: <call:md5_hex(<call:str(<call:time.time()>)>)>)
+    NOT FOR UPSTREAM
 
 * ``universe`` = <text> (Default: 'vanilla')
     Specify the name of the Condor universe

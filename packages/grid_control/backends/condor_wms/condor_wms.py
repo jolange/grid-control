@@ -69,7 +69,7 @@ class Condor(BasicWMS):
 		BasicWMS.__init__(self, config, name,
 			check_executor=CheckJobsMissingState(config, CondorCheckJobs(config)),
 			cancel_executor=cancel_executor)
-		self._task_id = config.get('task id', md5_hex(str(time.time())), persistent=True)  # FIXME
+		self._task_id = config.get('submission id', md5_hex(str(time.time())), persistent=True)  # FIXME
 		# finalize config state by reading values or setting to defaults
 		# load keys for condor pool ClassAds
 		self._jdl_writer = CondorJDLWriter(config)
