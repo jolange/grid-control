@@ -53,7 +53,7 @@ class SCRAMTask(DataTask):
 			self._project_area_base_fn = config.get_bool('area files basename', True,
 				on_change=TriggerInit('sandbox'))
 			self._project_area_matcher = config.get_matcher('area files',
-				'-.* -config bin lib python module data *.xml *.sql *.db *.cfi *.cff *.py -CVS -work.* *.pcm',
+				'-.* -config -tmp bin lib python module data *.xml *.sql *.db *.cfi *.cff *.py -CVS -work.* *.pcm',
 				default_matcher='BlackWhiteMatcher', on_change=TriggerInit('sandbox'))
 			self._log.info('Project area found in: %s', self._project_area)
 

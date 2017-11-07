@@ -373,7 +373,7 @@ CMSSW options
 * ``wall time`` = <duration hh[:mm[:ss]]>
     Requested wall time also used for checking the proxy lifetime
 
-* ``area files`` = <filter option> (Default: '-.* -config bin lib python module data *.xml *.sql *.db *.cfi *.cff *.py -CVS -work.* *.pcm')
+* ``area files`` = <filter option> (Default: '-.* -config -tmp bin lib python module data *.xml *.sql *.db *.cfi *.cff *.py -CVS -work.* *.pcm')
     List of files that should be taken from the CMSSW project area for running the job
 
 * ``area files matcher`` = <plugin> (Default: 'BlackWhiteMatcher')
@@ -524,7 +524,7 @@ CMSSWAdvanced options
 * ``wall time`` = <duration hh[:mm[:ss]]>
     Requested wall time also used for checking the proxy lifetime
 
-* ``area files`` = <filter option> (Default: '-.* -config bin lib python module data *.xml *.sql *.db *.cfi *.cff *.py -CVS -work.* *.pcm')
+* ``area files`` = <filter option> (Default: '-.* -config -tmp bin lib python module data *.xml *.sql *.db *.cfi *.cff *.py -CVS -work.* *.pcm')
     List of files that should be taken from the CMSSW project area for running the job
 
 * ``area files matcher`` = <plugin> (Default: 'BlackWhiteMatcher')
