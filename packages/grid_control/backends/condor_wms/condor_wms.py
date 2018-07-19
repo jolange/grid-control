@@ -91,6 +91,7 @@ class Condor(BasicWMS):
 		self._wall_time_mode = config.get_enum('wall time mode', WallTimeMode, WallTimeMode.ignore,
 			subset=[WallTimeMode.hard, WallTimeMode.ignore])
 		self._blacklist_nodes = config.get_list(['blacklist nodes'], [], on_change=None)
+		self._naf_project = config.get(['naf project'], '')
 		self._user_requirements = config.get('user requirements', '', on_change=None)
 
 	def get_interval_info(self):
@@ -250,6 +251,10 @@ class Condor(BasicWMS):
 			else:
 				jdl_str_list.append('x509userproxy = %s' % os.path.join(
 					self._get_remote_output_dn(), os.path.basename(auth_fn)))
+
+
+		if self._naf_project:
+			jdl_str_list.append('+MyProject = "%s"' % self._naf_project)
 
 		# job specific data
 		for jobnum in jobnum_list:
