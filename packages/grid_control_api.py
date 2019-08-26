@@ -221,6 +221,7 @@ def _parse_cmd_line(cmd_line_args):
 	parser.add_text(None, ' ', 'reset')
 	parser.add_bool(None, ' ', 'debug-console', False)  # undocumented debug option
 	parser.add_list(None, ' ', 'debug-trace')  # undocumented debug option
+	# TODO add version flag
 	# Deprecated options - refer to new report script instead
 	for (sopt, lopt) in [('-r', 'report'), ('-R', 'site-report'), ('-T', 'time-report'),
 			('-M', 'task-report'), ('-D', 'detail-report'), ('', 'help-vars')]:
